@@ -8,7 +8,7 @@ let verse2_2 =
   ' bottle of beer. Take one down and pass it around, no bottles of beer on the wall.'
 
 const list = document.querySelector('#song')
-
+const br = document.createElement('br')
 function bottles() {
   for (i = 99; i > 0; i--) {
     beers = i
