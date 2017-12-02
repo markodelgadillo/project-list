@@ -22,6 +22,29 @@ const response = [
 ]
 
 const $container = document.querySelector('.container')
-
 const $input = document.createElement('input')
 const $button = document.createElement('button')
+const $result = document.createElement('div')
+$result.setAttribute('class', 'result')
+$container.appendChild($input)
+$container.appendChild($button)
+$container.appendChild($result)
+
+function eightBall() {
+  const answer = response[Math.floor(Math.random() * response.length)]
+  $result.textContent = answer
+}
+
+function loadAnswer() {
+  const thinking = 'Thinking...'
+  $result.innerHTML = ''
+  for (i = 0; i < thinking.length; i++) {
+    setInterval(function() {
+      console.log(thinking[i])
+      $result.textContent += thinking[i]
+    }, 333)
+  }
+  // eightBall(response)
+}
+
+$button.addEventListener('click', loadAnswer)
