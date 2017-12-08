@@ -29,22 +29,31 @@ $result.setAttribute('class', 'result')
 $container.appendChild($input)
 $container.appendChild($button)
 $container.appendChild($result)
+const thinking = 'Thinking...'
 
 function eightBall() {
+  $result.textContent = ''
   const answer = response[Math.floor(Math.random() * response.length)]
   $result.textContent = answer
 }
 
-function loadAnswer() {
-  const thinking = 'Thinking...'
-  $result.innerHTML = ''
-  for (i = 0; i < thinking.length; i++) {
-    setInterval(function() {
-      console.log(thinking[i])
-      $result.textContent += thinking[i]
-    }, 333)
-  }
-  // eightBall(response)
+function delay() {
+  $result.textContent += thinking[i]
 }
 
-$button.addEventListener('click', loadAnswer)
+function loading(thinking) {
+  for (i = 0; i < thinking.length; i++) {
+    setTimeout(delay, 333)
+  }
+  eightBall()
+}
+
+// function loadAnswer() {
+//   $result.innerHTML = ''
+//   for (i = 0; i < thinking.length; i++) {
+//     setTimeout(loading(thinking), 1000)
+//   }
+//   eightBall(response)
+// }
+
+$button.addEventListener('click', loading)
